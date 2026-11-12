@@ -1,0 +1,49 @@
+# Default configuration. Change values here, not in code, so every run is traceable.
+seed: 0
+
+model:
+  weights: models/yolov8n.pt
+  device: auto          # "auto" -> cuda (NVIDIA), else mps (Apple M-series), else cpu
+  imgsz: 640            # square model input; must be a multiple of 32
+  conf_thres: 0.25      # NMS confidence threshold
+  iou_thres: 0.45       # NMS IoU threshold
+  max_det: 300
+  fuse: true            # fuse Conv+BN for faster inference (outputs ~identical)
+  # Layer whose output is captured by the forward hook (index into model.model).
+  # 9 = SPPF (end of backbone) for YOLOv8n. Run scripts/smoke_test.py to see all
+  # layers and their output shapes; pick the final layer on the DEVELOPMENT split
+  # (Phase 6) and freeze it before testing.
+  feature_layer: 9
+
+preprocessing:
+  pad_value: 114        # letterbox padding grey, same as Ultralytics
+
+transforms:
+  # Mild, label-preserving transforms. Tune on the development split only.
+  jpeg_quality: 75
+  blur_sigma: 1.0
+
+matching:
+  iou_min: 0.3          # matched pairs below this IoU are treated as unmatched
+  class_aware: true     # only boxes with the same predicted class can match
+
+features:
+  mode: gap             # gap | flatten; chosen on the dev split with scripts/select_params.py
+
+calibration:
+  fprs: [0.05, 0.01]    # operating points; thresholds learned from clean calibration data only
+  decision_fpr: 0.05    # operating point used for the CLEAN / POTENTIALLY ADVERSARIAL label
+
+dataset:
+  road_category_ids: [2, 3, 4, 6, 8, 10, 13]  # COCO ids: bicycle, car, motorcycle, bus, truck, traffic light, stop sign
+  max_images: 2000
+  split_fractions: {dev: 0.2, calibration: 0.3, test: 0.5}
+
+attacks:
+  seed: 0
+  n_images: 200         # test images per attack set (each with >= 1 clean detection)
+  conf_floor: 0.1       # vanishing loss pushes every class score above this towards 0
+  pgd: {steps: 10, alpha_frac: 0.25}          # step size = eps * alpha_frac; eps given in /255 on the command line
+  transfer: {surrogate_weights: models/yolov5nu.pt}
+  patch: {size: 80, steps: 400, lr: 0.01, batch: 8, n_train: 100}
+  success: {iou: 0.5, lost_fraction: 0.5}     # success = at least half of the clean detections lost

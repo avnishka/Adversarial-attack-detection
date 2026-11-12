@@ -1,0 +1,17 @@
+# Install PyTorch FIRST using the selector at https://pytorch.org/get-started/locally/
+# (pick the CUDA build for your GPU, or the CPU build). Then: pip install -r requirements.txt
+#
+# After everything works, freeze exact versions for reproducibility:
+#   pip freeze > requirements-lock.txt
+# and commit requirements-lock.txt (Section 6 of the proposal).
+
+ultralytics>=8.3,<9
+opencv-python>=4.8
+numpy>=1.24
+pillow>=10.0
+scipy>=1.10
+pandas>=2.0
+scikit-learn>=1.3
+matplotlib>=3.7
+pyyaml>=6.0
+pytest>=7.4

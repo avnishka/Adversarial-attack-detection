@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Datasets: never committed (too large). Keep only the folders.
+dataset/**/*
+!dataset/**/
+!dataset/**/.gitkeep
+
+# Results: big per-image outputs stay local; small tables, figures and summaries are committed
+results/**/*
+!results/**/
+!results/**/.gitkeep
+# small final outputs that SHOULD be committed
+!results/tables/*.csv
+!results/figures/*.png
+!results/figures/*.pdf
+!results/calibration/calibration.json
+!results/baseline/summary.json
+!results/*/scores.csv
+!results/*/attack_success.csv
+!results/*/attack_config.json
+!results/*/screening_meta.json
+!results/tables/**
+!results/figures/**
+!results/**/summary.json
+!results/**/*_metrics.json
+
+# Model weights (everyone downloads their own copy)
+models/*.pt
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+# Normalise line endings so Windows and Mac teammates don't create noisy diffs
+* text=auto
+*.py text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.png binary
+*.jpg binary
+*.pt binary
