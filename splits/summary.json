@@ -1,0 +1,26 @@
+{
+  "seed": 0,
+  "road_category_ids": [
+    2,
+    3,
+    4,
+    6,
+    8,
+    10,
+    13
+  ],
+  "splits": {
+    "dev": {
+      "images": 190,
+      "road_objects": 763
+    },
+    "calibration": {
+      "images": 286,
+      "road_objects": 1207
+    },
+    "test": {
+      "images": 476,
+      "road_objects": 2061
+    }
+  }
+}
