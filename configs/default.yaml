@@ -28,7 +28,7 @@ matching:
   class_aware: true     # only boxes with the same predicted class can match
 
 features:
-  mode: gap             # gap | flatten; chosen on the dev split with scripts/select_params.py
+  mode: flatten             # gap | flatten; chosen on the dev split with scripts/select_params.py
 
 calibration:
   fprs: [0.05, 0.01]    # operating points; thresholds learned from clean calibration data only
