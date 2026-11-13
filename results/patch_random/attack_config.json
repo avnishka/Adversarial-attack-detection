@@ -1,0 +1,34 @@
+{
+  "attack": "patch_random",
+  "name": "patch_random",
+  "eps_255": null,
+  "n_images": 200,
+  "source": "dataset/clean/test",
+  "device": "mps",
+  "seed": 0,
+  "attack_config": {
+    "seed": 0,
+    "n_images": 200,
+    "conf_floor": 0.1,
+    "pgd": {
+      "steps": 10,
+      "alpha_frac": 0.25
+    },
+    "transfer": {
+      "surrogate_weights": "models/yolov5nu.pt"
+    },
+    "patch": {
+      "size": 80,
+      "steps": 400,
+      "lr": 0.01,
+      "batch": 8,
+      "n_train": 100
+    },
+    "success": {
+      "iou": 0.5,
+      "lost_fraction": 0.5
+    }
+  },
+  "torch": "2.15.0",
+  "attack_success_rate": 0.01
+}
