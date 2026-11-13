@@ -1,0 +1,14 @@
+{
+  "config_hash": "c9b5904c20e9",
+  "device": "cpu",
+  "host": "hope",
+  "os": "Linux-7.1.8-arch1-3-x86_64-with-glibc2.44",
+  "python": "3.11.17",
+  "created": "2026-11-13T16:52:29",
+  "torch": "2.15.0+cu132",
+  "ultralytics": "8.4.211",
+  "n_rows": 200,
+  "source": "dataset/adversarial/pgd_eps8",
+  "ids": null,
+  "limit": null
+}
