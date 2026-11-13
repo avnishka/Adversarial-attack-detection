@@ -1,0 +1,7 @@
+stage,median_ms,p95_ms,mean_ms,fps_from_median,runs,overhead_vs_plain
+plain YOLOv8n (1 view),26.76,27.87,26.81,37.37,200,1.0
+screening: views,3.08,3.9,3.06,324.4,200,0.12
+screening: batched inference (3 views),212.89,227.43,213.54,4.7,200,7.96
+screening: scoring + decision,7.79,17.55,9.06,128.35,200,0.29
+screening: end to end,224.53,243.8,225.66,4.45,200,8.39
+
