@@ -1,0 +1,15 @@
+key,value
+device,cpu
+cpu,x86_64
+os,Linux-7.1.8-arch1-3-x86_64-with-glibc2.44
+python,3.11.17
+torch,2.15.0+cu132
+ultralytics,8.4.211
+torch_threads,6
+imgsz,640
+warmup,20
+runs,200
+n_images,50
+gpu,
+laptop_model,ASUS Zenbook 14 UM3406KA
+ram_gb,16
